@@ -1,3 +1,2 @@
 # intoxicating-inquiry
-
-Web application for keeping track of cocktail recipes. Also allows searching for recipes by ingredient or using in stock ingredients.
+Web application to keep track of cocktail recipes, and allow searching by ingredients or currently in-stock selection.
