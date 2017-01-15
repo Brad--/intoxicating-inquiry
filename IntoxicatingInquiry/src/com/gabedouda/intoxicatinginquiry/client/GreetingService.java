@@ -1,5 +1,6 @@
 package com.gabedouda.intoxicatinginquiry.client;
 
+import com.gabedouda.intoxicatinginquiry.shared.User;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -8,5 +9,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("greet")
 public interface GreetingService extends RemoteService {
-	String greetServer(String name) throws IllegalArgumentException;
+
+	User loginAndGetUser(String username, String password) throws Exception;
+
 }

@@ -20,7 +20,7 @@
   <!-- Other module inherits                                      -->
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.gabedouda.intoxicatinginquiry.client.IntoxicatingInquiry'/>
+  <entry-point class='com.gabedouda.intoxicatinginquiry.client.Login'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

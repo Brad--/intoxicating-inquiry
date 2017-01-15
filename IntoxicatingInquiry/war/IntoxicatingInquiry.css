@@ -1,7 +1,18 @@
-/** Add css rules here for your application. */
+html {
+	background: black;
+	background-image: url("img/wine-table-background.png");
+	background-repeat: no-repeat;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
 
+body {
+	background: none;
+	background-color: transparent;
+}
 
-/** Example rules used by the template application (remove for your app) */
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -31,5 +42,92 @@ h1 {
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
   margin: 15px 6px 6px;
+}
+
+.gwt-TextBox.loginBox, .gwt-PasswordTextBox.loginBox {
+	font-size: 14pt;
+	height: 46px;
+	width: 250px;
+	padding: 5px 10px;
+	margin: 2px;
+	background-color:rgba(255, 255, 255, 0.4);
+	border: 2px solid white;
+	color: white;
+	font-weight: 500;
+	box-sizing: border-box;
+}
+
+.gwt-Button.loginButton {
+	font-size: 14pt;
+	height: 46px;
+	width: 250px;
+	padding: 5px 10px;
+	margin: 2px;
+	background: none;
+	background-color:rgba(50, 50, 50, 0.7);
+	border: 2px solid white;
+	color: white;
+	font-weight: 500;
+	box-sizing: border-box;
+	border-radius: 0px;
+}
+
+.gwt-Button.loginButton:hover {
+	background-color:rgba(150, 150, 150, 0.7);
+	border: 2px solid white;
+	color: black;
+}
+
+.loginBackingPanel {
+	padding: 50px;
+	background-color:rgba(0, 0, 0, 0.8);
+    margin: auto;
+    position: fixed;
+    width: 350px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    margin-top: -125px;
+    margin-left: -175px;
+    text-align: center;
+}
+
+.gwt-PopupPanel.alertPopupBackground {
+	background-color:rgba(0, 0, 0, 0.9);
+	border: 2px solid white;
+	width: 400px;
+	text-align: center;
+}
+
+.gwt-Label.alertPopupMessageText {
+	color: white;
+	font-size: 13pt;
+	padding: 50px 10px;
+	margin: auto;
+	text-align: center;
+}
+
+.gwt-Button.alertPopupCloseButton {
+	background: none;
+	width: 100%;
+	border: 2px solid white;
+	border-radius: 0px;
+	color: white;
+	width: 400px;
+	height: 30px;
+	font-size: 16px;
+	line-height: 16px;
+	background-color:rgba(50, 50, 50, 0.9);
+}
+
+.gwt-Button.alertPopupCloseButton:hover {
+	border: 2px solid white;
+	color: black;
+	background-color:rgba(150, 150, 150, 0.9);
+}
+
+.alertPopupVerticalPanel {
+	text-align: center;
+	margin: auto;
 }
  
