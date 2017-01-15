@@ -72,6 +72,8 @@ public class Login extends BasePanel implements EntryPoint {
 		backingPanel.add(loginButton);
 		
 		getMainVerticalPanel().add(backingPanel);
+
+		usernameTextBox.setFocus(true);
 	}
 	
 	private void doLoginIfCredentialsValid(String username, String password) {
