@@ -3,6 +3,7 @@ package com.gabedouda.intoxicatinginquiry.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class BasePanel {
 
@@ -12,6 +13,7 @@ public class BasePanel {
 	public BasePanel() {
 		RootPanel.get("rootPanel").add(getMainVerticalPanel());
 		getMainVerticalPanel().addStyleName("mainVerticalPanel");
+		clear();
 	}
 	
 	protected GreetingServiceAsync getGreetingService() {
@@ -20,5 +22,13 @@ public class BasePanel {
 	
 	protected VerticalPanel getMainVerticalPanel() {
 		return mainVerticalPanel;
+	}
+	
+	protected void add(Widget widget) {
+		getMainVerticalPanel().add(widget);
+	}
+	
+	protected void clear() {
+		getMainVerticalPanel().clear();
 	}
 }

@@ -13,6 +13,11 @@ body {
 	background-color: transparent;
 }
 
+#gwd-logo {
+	height: 200px;
+	width: 200px;
+}
+
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -78,18 +83,21 @@ h1 {
 	color: black;
 }
 
+.backingPanel {
+	background-color:rgba(0, 0, 0, 0.8);
+	top: 50%;
+    left: 50%;
+    position: fixed;
+    text-align: center;
+    margin: auto;
+}
+
 .loginBackingPanel {
 	padding: 50px;
-	background-color:rgba(0, 0, 0, 0.8);
-    margin: auto;
-    position: fixed;
     width: 350px;
     height: 250px;
-    top: 50%;
-    left: 50%;
     margin-top: -125px;
     margin-left: -175px;
-    text-align: center;
 }
 
 .gwt-PopupPanel.alertPopupBackground {
@@ -129,5 +137,13 @@ h1 {
 .alertPopupVerticalPanel {
 	text-align: center;
 	margin: auto;
+}
+
+.loggedInBackingPanel {
+	padding: 50px;
+    width: 1000px;
+    height: 650px;
+    margin-top: -325px;
+    margin-left: -500px;
 }
  

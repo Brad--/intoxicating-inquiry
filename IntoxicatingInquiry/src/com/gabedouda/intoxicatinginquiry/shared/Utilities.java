@@ -3,6 +3,8 @@ package com.gabedouda.intoxicatinginquiry.shared;
 import com.gabedouda.intoxicatinginquiry.client.AlertPopup;
 
 public class Utilities {
+	
+	private static User loggedInUser;
 
 	public static void showAlert(String message) {
 		AlertPopup alert = new AlertPopup(message);
@@ -15,5 +17,13 @@ public class Utilities {
 			notEmpty = true;
 		}
 		return notEmpty;
+	}
+
+	public static User getLoggedInUser() {
+		return loggedInUser;
+	}
+
+	public static void setLoggedInUser(User loggedInUser) {
+		Utilities.loggedInUser = loggedInUser;
 	}
 }

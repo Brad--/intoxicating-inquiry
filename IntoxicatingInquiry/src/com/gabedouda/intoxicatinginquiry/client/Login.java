@@ -22,6 +22,7 @@ public class Login extends BasePanel implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		VerticalPanel backingPanel = new VerticalPanel();
+		backingPanel.addStyleName("backingPanel");
 		backingPanel.addStyleName("loginBackingPanel");
 		
 		usernameTextBox.addStyleName("loginBox");
@@ -71,7 +72,7 @@ public class Login extends BasePanel implements EntryPoint {
 		backingPanel.add(passwordTextBox);
 		backingPanel.add(loginButton);
 		
-		getMainVerticalPanel().add(backingPanel);
+		add(backingPanel);
 
 		usernameTextBox.setFocus(true);
 	}
@@ -88,7 +89,9 @@ public class Login extends BasePanel implements EntryPoint {
 				@Override
 				public void onSuccess(User result) {
 					if(result != null) {
-						// Show main screen
+						Utilities.setLoggedInUser(result);
+						clear();
+						HomePanel homePanel = new HomePanel();
 					} else {
 						AlertPopup alert = new AlertPopup("Invalid login credentials. Please try again.") {
 							@Override
