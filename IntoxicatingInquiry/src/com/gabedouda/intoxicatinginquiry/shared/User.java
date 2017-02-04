@@ -3,6 +3,9 @@ package com.gabedouda.intoxicatinginquiry.shared;
 import java.io.Serializable;
 
 public class User implements Serializable {
+	
+	public static String USER_ROLE_OWNER = "Owner";
+	public static String USER_ROLE_USER = "User";
 
 	private int userId;
 	private String username;

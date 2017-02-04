@@ -14,10 +14,14 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class Login extends BasePanel implements EntryPoint {
+public class LoginPanel extends BasePanel implements EntryPoint {
 
 	final RestrictedTextBox usernameTextBox = new RestrictedTextBox();
 	final PasswordTextBox passwordTextBox = new PasswordTextBox();
+	
+	public LoginPanel() {
+		super();
+	}
 	
 	@Override
 	public void onModuleLoad() {
@@ -79,15 +83,18 @@ public class Login extends BasePanel implements EntryPoint {
 	
 	private void doLoginIfCredentialsValid(String username, String password) {
 		if(Utilities.isNotEmpty(username) && Utilities.isNotEmpty(password)) {
+			final LoadingPopup loadingPopup = new LoadingPopup();
 			getGreetingService().loginAndGetUser(username, password, new AsyncCallback<User>() {
 	
 				@Override
 				public void onFailure(Throwable caught) {
+					loadingPopup.hide();
 					Utilities.showAlert("Call to server failed. Please try again.");
 				}
 	
 				@Override
 				public void onSuccess(User result) {
+					loadingPopup.hide();
 					if(result != null) {
 						Utilities.setLoggedInUser(result);
 						clear();
