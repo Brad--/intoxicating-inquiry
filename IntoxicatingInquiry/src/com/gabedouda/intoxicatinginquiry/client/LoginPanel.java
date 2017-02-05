@@ -21,6 +21,7 @@ public class LoginPanel extends BasePanel implements EntryPoint {
 	
 	public LoginPanel() {
 		super();
+		onModuleLoad();
 	}
 	
 	@Override
@@ -63,6 +64,7 @@ public class LoginPanel extends BasePanel implements EntryPoint {
 		});
 		
 		final Button loginButton = new Button("Login");
+		loginButton.addStyleName("baseButton");
 		loginButton.addStyleName("loginButton");
 		loginButton.addClickHandler(new ClickHandler() {
 			

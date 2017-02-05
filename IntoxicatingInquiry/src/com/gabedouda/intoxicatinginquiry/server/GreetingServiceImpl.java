@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.gabedouda.intoxicatinginquiry.client.GreetingService;
+import com.gabedouda.intoxicatinginquiry.shared.InventoryIngredient;
 import com.gabedouda.intoxicatinginquiry.shared.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -56,6 +57,32 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		closeConnection(conn);
 		
 		return user;
+	}
+	
+	@Override
+	public ArrayList<InventoryIngredient> getInventoryIngredientsForUserId(int userId) throws Exception {
+		ArrayList<InventoryIngredient> ingredientsList = new ArrayList<InventoryIngredient>();
+		
+		String sql = "SELECT * FROM inventory_ingredient WHERE userId=?";
+		
+		Connection conn = null;
+		
+		conn = getNewConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setLong(1, userId);
+		
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			InventoryIngredient inventoryIngredient = new InventoryIngredient();
+			inventoryIngredient.setInventoryIngredientId(rs.getInt(1));
+			inventoryIngredient.setUserId(rs.getInt(2));
+			inventoryIngredient.setIngredient(rs.getString(3));
+			ingredientsList.add(inventoryIngredient);
+		}
+		
+		closeConnection(conn);
+		
+		return ingredientsList;
 	}
 	
 }

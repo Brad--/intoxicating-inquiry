@@ -49,6 +49,10 @@ h1 {
   margin: 15px 6px 6px;
 }
 
+ .gwt-Label {
+ 	color: white;
+ }
+
 .gwt-TextBox.loginBox, .gwt-PasswordTextBox.loginBox {
 	font-size: 14pt;
 	height: 46px;
@@ -68,19 +72,8 @@ h1 {
 	width: 250px;
 	padding: 5px 10px;
 	margin: 2px;
-	background: none;
-	background-color:rgba(50, 50, 50, 0.7);
-	border: 2px solid white;
-	color: white;
 	font-weight: 500;
 	box-sizing: border-box;
-	border-radius: 0px;
-}
-
-.gwt-Button.loginButton:hover {
-	background-color:rgba(150, 150, 150, 0.7);
-	border: 2px solid white;
-	color: black;
 }
 
 .backingPanel {
@@ -116,19 +109,24 @@ h1 {
 }
 
 .gwt-Button.alertPopupCloseButton {
-	background: none;
 	width: 100%;
-	border: 2px solid white;
-	border-radius: 0px;
-	color: white;
 	width: 400px;
 	height: 30px;
-	font-size: 16px;
 	line-height: 16px;
-	background-color:rgba(50, 50, 50, 0.9);
+	font-size: 16px;
+	border-width: 1px;
+	margin: 4px;
 }
 
-.gwt-Button.alertPopupCloseButton:hover {
+.gwt-Button.baseButton {
+	background-color:rgba(50, 50, 50, 0.9);
+	color: white;
+	background: none;
+	border: 2px solid white;
+	border-radius: 0px;
+}
+
+.gwt-Button.baseButton:hover {
 	border: 2px solid white;
 	color: black;
 	background-color:rgba(150, 150, 150, 0.9);
@@ -137,6 +135,8 @@ h1 {
 .alertPopupVerticalPanel {
 	text-align: center;
 	margin: auto;
+	background-color:rgba(0, 0, 0, 0.9);
+	border: 2px solid #8f0000;
 }
 
 .loggedInBackingPanel {
@@ -151,7 +151,7 @@ h1 {
 	color: white;
 	font-size: 14pt;
 	border-bottom: 2px solid white;
-	margin-right: 50px;
+	margin: 0px 20px;
 	padding: 2px 10px;
 }
 
@@ -176,3 +176,30 @@ h1 {
     border: none !important;
     background: none !important;
  }
+ 
+.navigationPanel {
+	border-bottom: 2px solid #8f0000;
+	padding: 0px 10px 15px 10px;
+	width: 100%;
+}
+
+.ingredientLabel {
+	font-size: 14pt;
+	line-height: 30px;
+	width: 100px;
+	padding: 3px;
+}
+
+.ingredientRemoveButton {
+	height: 30px;
+	line-height: 0px;
+}
+ 
+.contentHeaderLabel {
+	font-size: 20pt;
+}
+
+.contentPanel {
+	padding: 0px 10px;
+}
+ 

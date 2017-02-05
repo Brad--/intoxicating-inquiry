@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public static String USER_ROLE_OWNER = "Owner";
 	public static String USER_ROLE_USER = "User";
 

@@ -18,6 +18,7 @@ public class AlertPopup extends PopupPanel {
 		Label messageLabel = new Label(message);
 		messageLabel.addStyleName("alertPopupMessageText");
 		Button closeButton = new Button("Close");
+		closeButton.addStyleName("baseButton");
 		closeButton.addStyleName("alertPopupCloseButton");
 		closeButton.addClickHandler(new ClickHandler() {
 			@Override
