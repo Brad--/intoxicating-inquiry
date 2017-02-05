@@ -186,20 +186,20 @@ h1 {
 .ingredientLabel {
 	font-size: 14pt;
 	line-height: 30px;
-	width: 100px;
-	padding: 3px;
+	padding: 1px 20px 1px 0px;
 }
 
 .ingredientRemoveButton {
-	height: 30px;
+	height: 25px;
 	line-height: 0px;
 }
  
 .contentHeaderLabel {
 	font-size: 20pt;
+	padding: 10px;
+	
 }
 
 .contentPanel {
-	padding: 0px 10px;
+	padding: 0px 15px;
 }
- 

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import com.gabedouda.intoxicatinginquiry.shared.InventoryIngredient;
 import com.gabedouda.intoxicatinginquiry.shared.Utilities;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -37,9 +41,31 @@ public class InventoryPanel extends VerticalContentAsyncPanel {
 			public void onSuccess(ArrayList<InventoryIngredient> result) {
 				loadingPopup.hide();
 				getContentPanel().clear();
+				FlexTable flexTable = new FlexTable();
+		        flexTable.setBorderWidth(0);
+		        flexTable.setCellPadding(0);
+		        flexTable.setCellSpacing(0);
+				int row = 0;
 				for(InventoryIngredient inventoryIngredient : result) {
-					getContentPanel().add(new InventoryIngredientDisplayWidget(inventoryIngredient));
+					int col = 0;
+					Label ingredientLabel = new Label(inventoryIngredient.getIngredient());
+					ingredientLabel.addStyleName("ingredientLabel");
+					
+					Button removeButton = new Button("Remove");
+					removeButton.addStyleName("baseButton");
+					removeButton.addStyleName("ingredientRemoveButton");
+					removeButton.addClickHandler(new ClickHandler() {
+						@Override
+						public void onClick(ClickEvent event) {
+							// TODO delete from inventory on click
+						}
+					});
+					
+					flexTable.setWidget(row, col++, ingredientLabel);
+					flexTable.setWidget(row++, col, removeButton);
 				}
+				getContentPanel().add(flexTable);
+
 			}});
 	}
 
