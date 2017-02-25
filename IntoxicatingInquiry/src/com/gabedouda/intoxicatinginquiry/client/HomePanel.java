@@ -20,7 +20,7 @@ public class HomePanel extends BasePanel {
 	}
 	
 	private void init() {
-		User user = Utilities.getLoggedInUser();
+		final User user = Utilities.getLoggedInUser();
 		
 		getContentHeaderLabel().addStyleName("contentHeaderLabel");
 		getContentPanel().addStyleName("contentPanel");
@@ -36,6 +36,12 @@ public class HomePanel extends BasePanel {
 		
 		Anchor inventoryAnchor = new Anchor("Inventory");
 		inventoryAnchor.addStyleName("navigationAnchor");
+		inventoryAnchor.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				swapContentPanel("Inventory", new InventoryPanel(user.getUserId()));
+			}
+		});
 		
 		Anchor inventorySearchAnchor = new Anchor("Inventory Search");
 		inventorySearchAnchor.addStyleName("navigationAnchor");
@@ -45,6 +51,12 @@ public class HomePanel extends BasePanel {
 		
 		Anchor recipesAnchor = new Anchor("Recipes");
 		recipesAnchor.addStyleName("navigationAnchor");
+		recipesAnchor.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				swapContentPanel("Recipes", new RecipePanel());
+			}
+		});
 		
 		Anchor logoutAnchor = new Anchor("Logout");
 		logoutAnchor.addStyleName("navigationAnchor");

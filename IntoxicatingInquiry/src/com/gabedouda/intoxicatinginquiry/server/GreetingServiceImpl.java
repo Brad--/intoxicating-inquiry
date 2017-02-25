@@ -12,6 +12,9 @@ import javax.sql.DataSource;
 
 import com.gabedouda.intoxicatinginquiry.client.GreetingService;
 import com.gabedouda.intoxicatinginquiry.shared.InventoryIngredient;
+import com.gabedouda.intoxicatinginquiry.shared.Recipe;
+import com.gabedouda.intoxicatinginquiry.shared.RecipeIngredient;
+import com.gabedouda.intoxicatinginquiry.shared.RecipeWrapper;
 import com.gabedouda.intoxicatinginquiry.shared.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -69,7 +72,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		
 		conn = getNewConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setLong(1, userId);
+		ps.setInt(1, userId);
 		
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
@@ -83,6 +86,80 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		closeConnection(conn);
 		
 		return ingredientsList;
+	}
+	
+	@Override
+	public void deleteInventoryIngredientById(int inventoryIngredientId) throws Exception {
+		
+		String sql = "DELETE FROM inventory_ingredient WHERE inventoryIngredientId=?";
+		
+		Connection conn = getNewConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, inventoryIngredientId);
+		
+		ps.executeUpdate();
+		
+		closeConnection(conn);
+	}
+	
+	@Override
+	public ArrayList<RecipeWrapper> getAllRecipeWrappers() throws Exception {
+		ArrayList<RecipeWrapper> recipeWrappers = new ArrayList<RecipeWrapper>();
+		
+		String sql = "SELECT * FROM recipe";
+		
+		Connection conn = null;
+		
+		conn = getNewConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
+		while(rs.next()) {
+			Recipe recipe = new Recipe();
+			recipe.setRecipeId(rs.getInt(1));
+			recipe.setRecipeName(rs.getString(2));
+			recipeList.add(recipe);
+		}
+		
+		closeConnection(conn);
+		
+		for(Recipe recipe : recipeList) {
+			RecipeWrapper recipeWrapper = new RecipeWrapper();
+			recipeWrapper.setRecipe(recipe);
+			recipeWrapper.setRecipeIngredients(getRecipeIngredientsByRecipeId(recipe.getRecipeId()));
+			recipeWrappers.add(recipeWrapper);
+		}
+		
+		return recipeWrappers;
+	}
+	
+	private ArrayList<RecipeIngredient> getRecipeIngredientsByRecipeId(int recipeId) throws Exception {
+		ArrayList<RecipeIngredient> recipeIngredientList = new ArrayList<RecipeIngredient>();
+		
+		String sql = "SELECT * FROM recipe_ingredient WHERE recipeId=?";
+		
+		Connection conn = null;
+		
+		conn = getNewConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, recipeId);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			RecipeIngredient recipeIngredient = new RecipeIngredient();
+			recipeIngredient.setRecipeIngredientId(rs.getInt(1));
+			recipeIngredient.setRecipeId(rs.getInt(2));
+			recipeIngredient.setAmount(rs.getString(3));
+			recipeIngredient.setIngredient(rs.getString(4));
+			recipeIngredientList.add(recipeIngredient);
+		}
+		
+		closeConnection(conn);
+		
+		return recipeIngredientList;
 	}
 	
 }

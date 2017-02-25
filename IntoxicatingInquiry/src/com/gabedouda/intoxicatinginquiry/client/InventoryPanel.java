@@ -46,7 +46,7 @@ public class InventoryPanel extends VerticalContentAsyncPanel {
 		        flexTable.setCellPadding(0);
 		        flexTable.setCellSpacing(0);
 				int row = 0;
-				for(InventoryIngredient inventoryIngredient : result) {
+				for(final InventoryIngredient inventoryIngredient : result) {
 					int col = 0;
 					Label ingredientLabel = new Label(inventoryIngredient.getIngredient());
 					ingredientLabel.addStyleName("ingredientLabel");
@@ -57,7 +57,17 @@ public class InventoryPanel extends VerticalContentAsyncPanel {
 					removeButton.addClickHandler(new ClickHandler() {
 						@Override
 						public void onClick(ClickEvent event) {
-							// TODO delete from inventory on click
+							getGreetingService().deleteInventoryIngredientById(inventoryIngredient.getInventoryIngredientId(), new AsyncCallback<Void>() {
+
+								@Override
+								public void onFailure(Throwable caught) {
+									Utilities.showAlert(caught.getMessage());
+								}
+
+								@Override
+								public void onSuccess(Void result) {
+									loadContentPanel();
+								}});
 						}
 					});
 					

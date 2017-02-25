@@ -3,6 +3,7 @@ package com.gabedouda.intoxicatinginquiry.client;
 import java.util.ArrayList;
 
 import com.gabedouda.intoxicatinginquiry.shared.InventoryIngredient;
+import com.gabedouda.intoxicatinginquiry.shared.RecipeWrapper;
 import com.gabedouda.intoxicatinginquiry.shared.User;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -16,5 +17,9 @@ public interface GreetingService extends RemoteService {
 	User loginAndGetUser(String username, String password) throws Exception;
 
 	ArrayList<InventoryIngredient> getInventoryIngredientsForUserId(int userId) throws Exception ;
+
+	void deleteInventoryIngredientById(int inventoryIngredientId) throws Exception;
+
+	ArrayList<RecipeWrapper> getAllRecipeWrappers() throws Exception;
 
 }

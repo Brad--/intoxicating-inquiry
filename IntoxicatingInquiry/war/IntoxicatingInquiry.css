@@ -203,3 +203,8 @@ h1 {
 .contentPanel {
 	padding: 0px 15px;
 }
+
+.gwt-DisclosurePanel .header, .gwt-DisclosurePanel .header a, .gwt-DisclosurePanel .header td {
+	color: white !important;
+	font-size: 14pt;
+}
